@@ -2,17 +2,16 @@
 set -eu
 
 DATA_DIR="/app/server/data"
-CONFIG_DIR="/config"
+HA_DATA_DIR="/data"
 
-mkdir -p "$DATA_DIR" "$CONFIG_DIR"
+mkdir -p "$DATA_DIR" "$HA_DATA_DIR"
 
-if [ ! -s "$CONFIG_DIR/encryption_key" ]; then
-    node -e "process.stdout.write(require('crypto').randomBytes(32).toString('hex'))" > "$CONFIG_DIR/encryption_key"
-    chmod 600 "$CONFIG_DIR/encryption_key"
+if [ ! -s "$HA_DATA_DIR/encryption_key" ]; then
+    node -e "process.stdout.write(require('crypto').randomBytes(32).toString('hex'))" > "$HA_DATA_DIR/encryption_key"
 fi
 
-export ENCRYPTION_KEY="$(cat "$CONFIG_DIR/encryption_key")"
+export ENCRYPTION_KEY="$(cat "$HA_DATA_DIR/encryption_key")"
 export PORT=3001
-export FREEAPI_DB_PATH="$DATA_DIR/freellmapi.db"
+export FREEAPI_DB_PATH="$HA_DATA_DIR/freellmapi.db"
 
 exec node server/dist/index.js
