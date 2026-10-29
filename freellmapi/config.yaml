@@ -12,11 +12,8 @@ arch:
 ports:
   3001/tcp: 3001
 ports_description:
-  3001/tcp: Internal FreeLLMAPI API and dashboard
+  3001/tcp: FreeLLMAPI API
+webui: "http://[HOST]:[PORT:3001]"
 map:
   - type: addon_config
     read_only: false
-options:
-  encryption_key: ""
-schema:
-  encryption_key: str
