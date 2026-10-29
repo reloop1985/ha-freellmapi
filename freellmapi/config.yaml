@@ -17,3 +17,7 @@ webui: "http://[HOST]:[PORT:3001]"
 map:
   - type: addon_config
     read_only: false
+options:
+  encryption_key: ""
+schema:
+  encryption_key: str
