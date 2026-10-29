@@ -1,0 +1,22 @@
+name: FreeLLMAPI
+version: "0.1.0"
+slug: freellmapi
+description: OpenAI-compatible API gateway for Open WebUI
+url: https://github.com/tashfeenahmed/freellmapi
+startup: application
+boot: auto
+init: false
+arch:
+  - amd64
+  - aarch64
+ports:
+  3001/tcp: 3001
+ports_description:
+  3001/tcp: Internal FreeLLMAPI API and dashboard
+map:
+  - type: addon_config
+    read_only: false
+options:
+  encryption_key: ""
+schema:
+  encryption_key: str
